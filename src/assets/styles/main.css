@@ -1,0 +1,20 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  touch-action: manipulation;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark,.bg-black {
+  background: #0c0c0d;
+}
+
+.overview{
+  background:red;
+  max-width:320px;
+}
