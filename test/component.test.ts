@@ -9,14 +9,14 @@ describe('Counter.vue', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it('should be interactive', async function () {
-      const wrapper = mount(Counter, { props: { initial: 0 } })
-      expect(wrapper.text()).toContain('0')
+  it('should be interactive', async () => {
+    const wrapper = mount(Counter, { props: { initial: 0 } })
+    expect(wrapper.text()).toContain('0')
 
-      expect(wrapper.find('.inc').exists()).toBe(true)
+    expect(wrapper.find('.inc').exists()).toBe(true)
 
-      await wrapper.get('button').trigger('click')
+    await wrapper.get('button').trigger('click')
 
-      expect(wrapper.text()).toContain('1')
-    })
+    expect(wrapper.text()).toContain('1')
+  })
 })

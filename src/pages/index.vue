@@ -1,20 +1,18 @@
-<route lang="yaml">
-meta:
-  layout: default
-</route>
+<script setup lang="ts">
+const productStore = useProductStore()
+const { listProducts } = storeToRefs(productStore)
+await productStore.fetchAllProducts()
+</script>
 
 <template>
-  <div pt-20 max-w-920px flex justify-between mx-auto>
-    <div>
-      <div bg-dark text-white rounded-full lh-10 w-10 h-10 text-center>
-        P
-      </div>
-      <div ml-5>
-        Powdur
-      </div>
+  <section v-if="listProducts.length > 0" py-5>
+    <div lg="container w-full min-h-screen h-full overflow-hidden" text="text-black dark:text-gray-200">
+      <CardProduct :products="listProducts" />
     </div>
-    <div>
-      Shipping Information
-    </div>
-  </div>
+  </section>
 </template>
+
+<route lang="yaml">
+meta:
+  layout: home
+</route>
