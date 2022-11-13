@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div sm="col-12 pt-10" lg="pt-24 items-center col-6">
+  <div sm="col-12 py-10" lg="py-15 items-center col-6">
     <a href="/" flex item-center>
       <i i-mdi:arrow-left text-gray text-20px self-center />
       <div flex items-center>

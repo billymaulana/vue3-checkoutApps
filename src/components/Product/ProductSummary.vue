@@ -76,7 +76,7 @@ const applePay = () => {
 </script>
 
 <template>
-  <div sm="col-12 pt-10" lg="px-20 pt-24 col-6 shadow-[15px_0_30px_0_rgba(0,0,0,18%)]">
+  <div sm="col-12 py-10" lg="px-15 py-15 col-6 shadow-[15px_0_30px_0_rgba(0,0,0,18%)]">
     <button
       text-white
       btn-primary my-4 @click="applePay"
@@ -122,7 +122,7 @@ const applePay = () => {
           Payment Details
         </h4>
       </div>
-      <div my-4>
+      <div>
         <label font-bold text-black>Card information</label>
         <div class="form-group-merge">
           <div class="relative">
