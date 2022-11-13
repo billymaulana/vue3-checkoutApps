@@ -32,4 +32,4 @@ Features:
     pnpm dev
 ```
 
-Demo(https://billymaulana-checkoutapps.netlify.app/product/1)
+[Demo: (https://billymaulana-checkoutapps.netlify.app/)]
