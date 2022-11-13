@@ -12,7 +12,8 @@ import Unocss from 'unocss/vite'
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '~': `${path.resolve(__dirname, './')}`,
+      '@/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
   plugins: [
@@ -34,10 +35,12 @@ export default defineConfig({
         'vue/macros',
         'vue-router',
         '@vueuse/core',
+        'pinia',
       ],
       dts: true,
       dirs: [
         './src/composables',
+        './src/stores',
       ],
       vueTemplate: true,
     }),
@@ -48,9 +51,20 @@ export default defineConfig({
     }),
 
     // https://github.com/antfu/unocss
-    // see unocss.config.ts for config
     Unocss(),
   ],
+
+  server: {
+    proxy: {
+      '^/api/': {
+        target: 'https://fakestoreapi.com',
+        changeOrigin: true,
+        secure: true,
+        cookieDomainRewrite: 'localhost',
+        rewrite: (path: string) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 
   // https://github.com/vitest-dev/vitest
   test: {
