@@ -20,7 +20,7 @@ Features:
 
 ## Installation
 * This project using `pnpm` as package manager.
-# If you don't have pnpm installed, 
+If you don't have pnpm installed, 
     run: npm install -g pnpm
     
 ```bash
