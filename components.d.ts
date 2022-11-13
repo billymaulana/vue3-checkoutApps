@@ -7,8 +7,15 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CardProduct: typeof import('./src/components/Card/CardProduct.vue')['default']
     Counter: typeof import('./src/components/Counter.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
+    Input: typeof import('./src/components/Input.vue')['default']
+    Loading: typeof import('./src/components/Loading/Loading.vue')['default']
+    Logo: typeof import('./src/components/Logo.vue')['default']
+    Navbar: typeof import('./src/components/Navbar/Navbar.vue')['default']
+    ProductOverview: typeof import('./src/components/Product/ProductOverview.vue')['default']
+    ProductSummary: typeof import('./src/components/Product/ProductSummary.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
