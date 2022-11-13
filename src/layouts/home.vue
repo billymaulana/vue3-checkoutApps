@@ -9,6 +9,7 @@
     <template #default>
       <main dark:text-white>
         <router-view />
+        <CartModal v-if="isCartModal" />
       </main>
     </template>
   </Suspense>

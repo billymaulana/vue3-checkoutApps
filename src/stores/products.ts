@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import type { IProduct } from 'types'
+import type { ICart, IProduct } from 'types'
 interface State {
   listProducts: IProduct[]
   product: IProduct
   filteredProducts: IProduct[]
-  cart: IProduct[]
+  cart: ICart[]
   isLoading: boolean
 }
 
@@ -32,22 +33,47 @@ export const useProductStore = defineStore('product', {
       this.isLoading = false
       return response
     },
-    addProduct(product: IProduct) {
-      const found = this.cart.find(item => item.id === product.id)
-      if (!found)
-        this.cart.push({ ...product, rating: { count: 1, rate: product.rating.rate } })
+    addCart(product: IProduct) {
+      const myCart = this.cart.find(item => item.id === product.id)
+      if (!myCart)
+        this.cart.push({ ...product, quantity: 1 })
       else
-        found.rating.count++
+        myCart.quantity++
       localStorage.setItem('cart', JSON.stringify(this.cart))
+    },
+    deleteCart(id: number) {
+      this.cart = this.cart.filter(e => e.id !== id)
+      localStorage.setItem('cart', JSON.stringify(this.cart))
+    },
+    inc(id: number) {
+      console.log(id)
+      const myCart: any = this.cart.find(item => item.id === id)
+      // eslint-disable-next-line curly
+      if (this.cart) {
+        myCart.quantity++
+      }
+      localStorage.setItem('cart', JSON.stringify(myCart))
+    },
+
+    dec(id: number) {
+      console.log(id)
+      const myCart: any = this.cart.find(item => item.id === id)
+      if (this.cart) {
+        if (myCart.quantity > 1) {
+          myCart.quantity--
+          localStorage.setItem('cart', JSON.stringify(myCart))
+        }
+        else { this.deleteCart(id) }
+      }
     },
   },
 
   getters: {
     getTotalPrice(state) {
-      return state.cart.reduce((totalPrice, product) => Math.round(totalPrice += product.price * product.rating.count), 0)
+      return state.cart.reduce((totalPrice, product) => (totalPrice += product.price * product.quantity), 0)
     },
     getQuantityProducts(state) {
-      return state.cart.reduce((totalQuantity, product) => totalQuantity += product.rating.count, 0)
+      return state.cart.reduce((totalQuantity, product) => totalQuantity += product.quantity, 0)
     },
   },
 })

@@ -1,12 +1,8 @@
 <!-- eslint-disable no-alert -->
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
-const props = defineProps({
-  product: {
-    type: Object,
-    required: true,
-  },
-})
+const productStore = useProductStore()
+const { getTotalPrice } = storeToRefs(productStore)
 const checkoutStore = useCheckoutStore()
 const { listCountries } = storeToRefs(checkoutStore)
 const router = useRouter()
@@ -46,7 +42,6 @@ const getCardType = computed(() => {
     return 'visa'
   }
 })
-
 const disableSubmit = computed(() => {
   if (
     data.value.address === '' || data.value.address.trim().length === 0
@@ -62,14 +57,12 @@ const disableSubmit = computed(() => {
     return false
 },
 )
-
 const handlingCheckout = () => {
   if (disableSubmit.value === false)
     alert('Success')
   console.log('submitted..')
   router.push('/')
 }
-
 const applePay = () => {
   console.log('checkout apple pay')
 }
@@ -94,11 +87,11 @@ const applePay = () => {
     </h3>
     <form enctype="multipart/form-data">
       <div my-4>
-        <label font-bold text-black>Email</label>
+        <label font-medium text-black>Email</label>
         <input v-model="data.email" type="email" placeholder="Email" class="form-control" required>
       </div>
       <div my-4>
-        <label font-bold text-black>Shipping Address</label>
+        <label font-medium text-black>Shipping Address</label>
         <div
           class="form-group-merge"
         >
@@ -116,14 +109,14 @@ const applePay = () => {
           <input v-model="data.address" type="text" placeholder="Address" class="w-full px-3 py-2 outline-none border-t-width-[1.5px] border-gray-200" required>
         </div>
       </div>
-      <div>
+      <div my-4>
         <a underline underline-offset-4 f-12 text-gray decoration-gray>Enter Address Manualy</a>
         <h4 text-left font-bold mt-10>
           Payment Details
         </h4>
       </div>
       <div>
-        <label font-bold text-black>Card information</label>
+        <label font-medium text-black>Card information</label>
         <div class="form-group-merge">
           <div class="relative">
             <input
@@ -197,11 +190,11 @@ const applePay = () => {
       </div>
       <div my-4 flex items-center space-x-2>
         <input id="sameAddress" type="checkbox" name="sameAddress" class="w-4 h-4 p-0  m-0 bg-white">
-        <label for="sameAddress" class="text-black font-semibold m-0">Billing address is same as shipping</label>
+        <label for="sameAddress" class="text-black font-medium m-0">Billing address is same as shipping</label>
       </div>
     </form>
     <button :disabled="disableSubmit" :class="disableSubmit ? 'text-gray' : 'text-white'" class="btn-primary mt-10" @click.prevent="handlingCheckout">
-      Pay ${{ props?.product?.price }}
+      Pay ${{ getTotalPrice }}
     </button>
   </div>
 </template>
