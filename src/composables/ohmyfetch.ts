@@ -2,8 +2,8 @@
 import { $fetch } from 'ohmyfetch'
 
 export const useFetch = $fetch.create({
-  // baseURL: 'https://fakestoreapi.com',
-  baseURL: '/api',
+  // baseURL: '/api',
+  baseURL: 'https://fakestoreapi.com',
   async onRequest({ request }) {
     console.log('fetch request', request)
   },
