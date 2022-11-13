@@ -9,12 +9,44 @@ body,
   touch-action: manipulation;
   -moz-osx-font-smoothing: grayscale;
 }
-
-html.dark,.bg-black {
-  background: #0c0c0d;
+[v-cloack]{
+  display:none;
+}
+html.dark{
+  background: #101010;
 }
 
-.overview{
-  background:red;
-  max-width:320px;
+.row>*{
+  flex-shrink:0;
+  width:100%;
+  max-width:100%;
+  padding-right:calc(1.5rem * .5);
+  padding-left:calc(1.5rem * .5);
+}
+
+label{
+  margin-bottom:4px;
+  display:block;
+  color:#5e5e5e;
+}
+input,select{
+  font-size: 14px;
+  padding: 0 0.75rem;
+  height:36px;
+  color:black;
+}
+select:required:invalid {
+  color: #9aa3ae;
+}
+option {
+  color: black;
+}
+.form-control{
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 0 0.75rem;
+  height:36px;
+  width:100%;
+  color:black;
+  box-shadow: 0 0 0 1px #e0e0e0, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
 }
