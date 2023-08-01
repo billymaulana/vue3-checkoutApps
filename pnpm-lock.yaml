@@ -13,7 +13,7 @@ specifiers:
   maska: ^1.5.0
   ohmyfetch: ^0.4.21
   pinia: ^2.0.23
-  pnpm: ^7.15.0
+  pnpm: ^7.33.4
   sass: ^1.56.1
   taze: ^0.8.3
   typescript: ^4.8.4
@@ -45,7 +45,7 @@ devDependencies:
   '@vue/test-utils': 2.2.1_vue@3.2.45
   eslint: 8.27.0
   jsdom: 20.0.2
-  pnpm: 7.15.0
+  pnpm: 7.33.4
   sass: 1.56.1
   taze: 0.8.3
   typescript: 4.8.4
@@ -3783,8 +3783,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pnpm/7.15.0:
-    resolution: {integrity: sha512-GGQ5+MCwD0bpq+65uitpgO1+ZusZ1keO5ebG/CH6ciu1ohnZj5Y3X374Ow/CBApa+Jw2/NUifVRz2fW4JChftA==}
+  /pnpm/7.33.4:
+    resolution: {integrity: sha512-xEbf/tkwHpGM/GXq5U/sDSiE6ykLPho+o71PHNRWqkVLm6dJe4G/5Pg619Ow32ovekrr7pii5qtfamujB/+1bA==}
     engines: {node: '>=14.6'}
     hasBin: true
     dev: true
